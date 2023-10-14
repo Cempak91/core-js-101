@@ -18,8 +18,8 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings( value1, value2) {
-  let result = value1+value2;
+function concatenateStrings(value1, value2) {
+  const result = value1 + value2;
   return result;
 }
 
@@ -35,8 +35,8 @@ function concatenateStrings( value1, value2) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength( value ) {
-  return value.lenght;
+function getStringLength(value) {
+  return value.length;
 }
 
 /**
@@ -53,7 +53,7 @@ function getStringLength( value ) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  return ('Hello, ' + firstName +' ' + lastName);
+  return (`Hello, ${firstName} ${lastName}!`);
 }
 
 /**
@@ -67,7 +67,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
- return value.slice(8,-1);
+  return value.slice(7, -1);
 }
 
 
@@ -82,7 +82,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-  return value.slice(1);
+  return value[0];
 }
 
 /**
@@ -127,8 +127,8 @@ function repeatString(value, count) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences( str, value ) {
-  return str.replace(value,'');
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
@@ -143,7 +143,7 @@ function removeFirstOccurrences( str, value ) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.slice(1,-1);
+  return str.slice(1, -1);
 }
 
 
@@ -177,7 +177,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    return str.split(";")
+  return str.split(';');
 }
 
 /**
@@ -203,7 +203,7 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(width, height ) {
+function getRectangleString(width, height) {
   const horizont = '─';
   const vertical = '│';
   const leftUp = '┌';
@@ -211,9 +211,9 @@ function getRectangleString(width, height ) {
   const leftDown = '└';
   const rightDown = '┘\n';
 
-  const firstLine = leftUp + horizont.repeat(width -2) + rightUp;
-  const verticalLines = vertical + " ".repeat(width -2) + vertical + '\n';
-  const lastLine = leftDown + horizont.repeat(width -2) + rightDown; 
+  const firstLine = leftUp + horizont.repeat(width - 2) + rightUp;
+  const verticalLines = `${vertical + ' '.repeat(width - 2) + vertical}\n`;
+  const lastLine = leftDown + horizont.repeat(width - 2) + rightDown;
 
   return (`${firstLine}${verticalLines.repeat(height - 2)}${lastLine}`);
 }
@@ -236,9 +236,9 @@ function getRectangleString(width, height ) {
  *
  */
 function encodeToRot13(str) {
-  const original = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const cipher = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-  return str.replace(/[a-z]/gi, letter => cipher[original.indexOf(letter)]);
+  const original = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cipher = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(/[a-z]/gi, (letter) => cipher[original.indexOf(letter)]);
 }
 
 /**
@@ -254,14 +254,12 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(value) {
-  function isString(value) {
-    const typeOfObject = Object.prototype.toString.call(value); 
-    //console.log(Object.prototype.toString.call(typeOfObject))
-    return(typeof(value)==="string"|| typeOfObject === '[object String]');
-  }
-}
 
+function isString(value) {
+  const typeOfObject = Object.prototype.toString.call(value);
+  // console.log(Object.prototype.toString.call(typeOfObject))
+  return (typeof (value) === 'string' || typeOfObject === '[object String]');
+}
 
 /**
  * Returns playid card id.
@@ -288,11 +286,11 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const card_deck =['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-  'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-  'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'];
-  return card_deck.indexOf(value);
+  const cardDeck = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return cardDeck.indexOf(value);
 }
 
 
